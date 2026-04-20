@@ -5,7 +5,7 @@ session_start();
 
 // POST以外はトップへ
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: /contact/');
+    header('Location: /renew/contact/');
     exit;
 }
 
@@ -34,5 +34,5 @@ send_contact_mail($data);
 // セッションクリア
 unset($_SESSION['contact_data'], $_SESSION['contact_token']);
 
-header('Location: /contact/thanks/');
+header('Location: /renew/contact/thanks/');
 exit;

@@ -17,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($errors)) {
         $_SESSION['contact_errors'] = $errors;
         $_SESSION['contact_input']  = $input;
-        header('Location: /contact/error/');
+        header('Location: /renew/contact/error/');
         exit;
     }
 
     // バリデーション通過 → セッションに保存してGETリダイレクト（PRGパターン）
     $_SESSION['contact_data']  = $input;
     $_SESSION['contact_token'] = bin2hex(random_bytes(32));
-    header('Location: /contact/confirm/');
+    header('Location: /renew/contact/confirm/');
     exit;
 }
 
@@ -152,7 +152,7 @@ require_once dirname(__DIR__) . '/_parts/header.php';
         <span class="material-symbols-rounded">keyboard_arrow_left</span>
         修正する
       </a>
-      <form class="contact-confirm__send" method="post" action="/contact/send.php">
+      <form class="contact-confirm__send" method="post" action="/renew/contact/send.php">
         <input type="hidden" name="token" value="<?= h($token) ?>">
         <button type="submit" class="btn btn--submit">
           <span class="btn__text">この内容で送信する</span>

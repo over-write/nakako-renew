@@ -43,7 +43,7 @@ require_once __DIR__ . '/_parts/header.php';
     </div>
   </section>
 
-  <form class="contact-form" action="/contact/confirm/" method="post" novalidate>
+  <form class="contact-form" action="/renew/contact/confirm/" method="post" novalidate>
     <input type="hidden" name="csrf_token" value="<?= h(csrf_token()) ?>">
     <section class="form-section">
       <h3 class="title--outline">お客様情報</h3>

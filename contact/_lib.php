@@ -108,6 +108,7 @@ function validate_contact(array $data): array {
 const LOG_FILE = __DIR__ . '/_logs/mail.log';
 
 function write_mail_log(string $type, string $to, string $subject, bool $result): void {
+    /*
     $log_dir = dirname(LOG_FILE);
     if (!is_dir($log_dir)) {
         mkdir($log_dir, 0700, true);
@@ -121,6 +122,7 @@ function write_mail_log(string $type, string $to, string $subject, bool $result)
         $subject,
     ]) . "\n";
     file_put_contents(LOG_FILE, $line, FILE_APPEND | LOCK_EX);
+    */
 }
 
 function smtp_send(string $to, string $from_addr, string $from_name, string $subject, string $body, array $extra_headers = []): bool {
@@ -173,7 +175,7 @@ function smtp_send(string $to, string $from_addr, string $from_name, string $sub
 
     // dot stuffing
     $lines   = explode("\r\n", $message);
-    $stuffed = implode("\r\n", array_map(fn($l) => str_starts_with($l, '.') ? '.' . $l : $l, $lines));
+    $stuffed = implode("\r\n", array_map(fn($l) => ($l !== '' && $l[0] === '.') ? '.' . $l : $l, $lines));
     fputs($fp, $stuffed . "\r\n");
 
     $w('.');
