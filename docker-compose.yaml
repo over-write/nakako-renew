@@ -1,0 +1,17 @@
+services:
+  php-server:
+    image: php:8.2-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+    depends_on:
+      - mailpit
+
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - "8026:8025"
