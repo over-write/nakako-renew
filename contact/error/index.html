@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>入力エラー | 株式会社ナカコー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/contact.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0" />
+</head>
+<body class="page-contact-error">
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+<header class="site-header" id="site-header">
+  <div class="site-header__bar">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="../../">
+        <img src="../../assets/img/logo.svg" alt="株式会社ナカコー">
+      </a>
+      <button type="button" class="site-header__menu-btn" id="menu-toggle" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
+        <span class="site-header__menu-icon" aria-hidden="true"></span>
+      </button>
+      <div class="site-header__nav-wrap" id="global-nav">
+        <button type="button" class="site-header__close" id="menu-close" aria-label="メニューを閉じる">
+          <span aria-hidden="true">×</span>
+        </button>
+        <nav class="gnav" aria-label="グローバルナビゲーション">
+          <ul class="gnav__list">
+            <li class="gnav__item">
+              <a class="gnav__link" href="../../about/">私たちについて</a>
+            </li>
+            <li class="gnav__item gnav__item--has-sub">
+              <a class="gnav__link gnav__link--parent" href="../../powder-processing/">
+                粉体受託加工
+                <span class="material-symbols-rounded">arrow_circle_down</span>
+              </a>
+              <div class="gnav__sub-wrap">
+                <ul class="gnav__sub">
+                  <li><a class="gnav__sub-link" href="../../powder-processing/#about">粉体受託加工について<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="../../powder-processing/#funsai">粉砕加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="../../powder-processing/#kongo">混合加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="../../powder-processing/#zouryu">造粒加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="../../powder-processing/#teion">低温粉砕加工・冷凍粉砕加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="../../powder-processing/#bunkyu">分級加工・乾燥加工・その他<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="../../powder-processing/#setsubi">粉体加工設備一覧<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="gnav__item">
+              <a class="gnav__link" href="../../steelmaking-auxiliary-materials/">製鋼副資材</a>
+            </li>
+            <li class="gnav__item">
+              <a class="gnav__link" href="../../greening-materials/">環境緑化資材</a>
+            </li>
+          </ul>
+        </nav>
+        <a class="btn btn--header-contact btn--header-active" href="../../contact/">
+          <span class="material-symbols-rounded">mail</span>
+          お問い合わせ
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="main main--sub main--contact">
+  <header class="page-hero page-hero--blue page-hero--short page-hero--contact">
+    <div class="page-hero__inner page-hero__inner--breadcrumb">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <ol class="breadcrumb__list">
+          <li><a href="../../">トップ</a></li>
+          <li><a href="../../contact/">お問い合わせ</a></li>
+          <li aria-current="page">入力エラー</li>
+        </ol>
+      </nav>
+      <h1 class="page-hero__title">入力エラー</h1>
+      <p class="page-hero__en">Contact Us</p>
+    </div>
+  </header>
+
+  <section class="contact-lead">
+    <div class="contact-lead__inner">
+      <h2 class="page-title page-title--blue">粉体受託加工へのお問い合わせ</h2>
+      <p>こちらは、粉体受託加工へのお問い合わせとなります。<br>それ以外のお問い合わせについては、各ページに記載されている事業部・工場へ直接お問い合わせください。</p>
+      <div class="contact-lead__error">
+        <p>入力内容に不備があります。エラーが表示されている項目をご確認のうえ、再度ご入力ください。</p>
+      </div>
+    </div>
+  </section>
+
+  <form class="contact-form" action="../../contact/confirm/" method="post" novalidate>
+    <section class="form-section">
+      <h3 class="title--outline">お客様情報</h3>
+      <div class="form-grid">
+        <div class="form-field form-field--error">
+          <label class="form-field__label" for="company">貴社名<span class="req">必須</span></label>
+          <div class="form-field__body">
+            <input class="form-field__input form-field__input--error" type="text" id="company" name="company" placeholder="例）株式会社ナカコー" required autocomplete="organization" aria-invalid="true" aria-describedby="company-error">
+            <p class="form-field__error" id="company-error">必須項目です。入力してください。</p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="dept">部署名・役職名<span class="req">必須</span></label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="dept" name="dept" placeholder="例）営業企画部" required>
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="name">ご担当者名<span class="req">必須</span></label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="name" name="name" placeholder="例）田中 太郎" required autocomplete="name">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field form-field--error">
+          <label class="form-field__label" for="email">メールアドレス<span class="req">必須</span></label>
+          <div class="form-field__body">
+            <input class="form-field__input form-field__input--error" type="email" id="email" name="email" placeholder="例）nakako-digital@nakako.co.jp" required autocomplete="email" aria-invalid="true" aria-describedby="email-error">
+            <p class="form-field__error" id="email-error">メールアドレスの形式が正しくありません。</p>
+          </div>
+        </div>
+        <div class="form-field form-field--inline form-field--error">
+          <label class="form-field__label" for="zip">郵便番号<span class="req">必須</span></label>
+          <div class="form-field__body">
+            <div class="form-field__row">
+              <input class="form-field__input form-field__input--short form-field__input--error" type="text" id="zip" name="zip" inputmode="numeric" placeholder="6510083" required aria-invalid="true" aria-describedby="zip-error">
+              <button class="form-field__btn" type="button">住所検索</button>
+              <span class="form-field__hint">（ハイフンなし）</span>
+            </div>
+            <p class="form-field__error" id="zip-error">郵便番号は7桁の半角数字で入力してください。</p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="pref">ご住所（都道府県）<span class="req">必須</span></label>
+          <div class="form-field__body">
+            <div class="form-field__row">
+              <input class="form-field__input form-field__input--short" type="text" id="pref" name="pref" placeholder="自動入力されます" required>
+            </div>
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="address">ご住所<span class="req">必須</span></label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="address" name="address" placeholder="自動入力されます（番地以降はご入力ください）" required autocomplete="street-address">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field form-field--inline">
+          <label class="form-field__label" for="tel">TEL<span class="req">必須</span></label>
+          <div class="form-field__body">
+            <div class="form-field__row">
+              <input class="form-field__input form-field__input--short" type="tel" id="tel" name="tel" placeholder="例）0794439378" required autocomplete="tel">
+              <span class="form-field__hint">（ハイフンなし）</span>
+            </div>
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field form-field--inline">
+          <label class="form-field__label" for="fax">FAX</label>
+          <div class="form-field__body">
+            <div class="form-field__row">
+              <input class="form-field__input form-field__input--short" type="text" id="fax" name="fax" placeholder="例）0794439388" inputmode="numeric">
+              <span class="form-field__hint">（ハイフンなし）</span>
+            </div>
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h3 class="title--outline">粉体受託加工に関する内容</h3>
+      <div class="form-grid">
+        <div class="form-field form-field--error">
+          <label class="form-field__label" for="topic">お問い合わせ内容<span class="req">必須</span></label>
+          <div class="form-field__body">
+            <select class="form-field__input form-field__select form-field__input--error" id="topic" name="topic" required aria-invalid="true" aria-describedby="topic-error">
+              <option value="">選択してください</option>
+              <option value="funsai">粉砕</option>
+              <option value="bunkyu">分級</option>
+              <option value="kongo">混合</option>
+              <option value="zouryu">造粒</option>
+              <option value="other">その他お見積りの有無等</option>
+            </select>
+            <p class="form-field__error" id="topic-error">お問い合わせ内容を選択してください。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section form-section--bar">
+      <h2 class="form-section__title-bar">原料情報</h2>
+      <div class="form-grid">
+        <div class="form-field">
+          <label class="form-field__label" for="m-name">原料名</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="m-name" name="material_name">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="m-size">粒度・形状</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="m-size" name="material_size">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="m-in">入荷形態</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="m-in" name="material_in">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="m-other">その他</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="m-other" name="material_other">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section form-section--bar">
+      <h2 class="form-section__title-bar">製品情報</h2>
+      <div class="form-grid">
+        <div class="form-field">
+          <label class="form-field__label" for="p-name">製品名</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="p-name" name="product_name">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="p-plan">製品企画</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="p-plan" name="product_plan">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="p-analysis">分析方法</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="p-analysis" name="product_analysis">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="p-ship">出荷荷姿</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="p-ship" name="product_ship">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="p-useage">製品用途</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="p-useage" name="product_useage">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="p-other">その他</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="p-other" name="product_other">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section form-section--bar">
+      <h2 class="form-section__title-bar">その他</h2>
+      <div class="form-grid">
+        <div class="form-field">
+          <label class="form-field__label" for="o-qty">数量・継続性</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="o-qty" name="other_qty">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="o-period">加工時期</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="o-period" name="other_period">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label" for="o-other">その他</label>
+          <div class="form-field__body">
+            <input class="form-field__input" type="text" id="o-other" name="other_note">
+            <p class="form-field__error"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section">
+      <h3 class="title--outline">個人情報保護法への同意</h3>
+      <p><a href="../../privacy/" target="_blank">個人情報保護法</a>をご覧いただいた上、同意いただける場合はチェックを付けてください。</p>
+      <div class="form-field--check form-field--error">
+        <label class="form-check">
+          <input type="checkbox" name="privacy" value="1" required aria-invalid="true" aria-describedby="privacy-error">
+          <span class="form-check__content">
+            <span class="material-symbols-rounded">check</span>個人情報保護法に同意する
+          </span>
+        </label>
+        <p class="form-field__error" id="privacy-error">必須項目です。チェックを入れてください。</p>
+      </div>
+    </section>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn--submit">
+        <span class="btn__text">確認画面へ</span>
+        <span class="material-symbols-rounded">keyboard_arrow_right</span>
+      </button>
+    </div>
+  </form>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__cols">
+      <div class="site-footer__col site-footer__col--sitemap">
+        <ul class="site-footer__links site-footer__links--main">
+          <li><a href="../../">トップページ<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+          <li><a href="../../about/">私たちについて<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+          <li><a href="../../steelmaking-auxiliary-materials/">製鋼副資材<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+          <li><a href="../../greening-materials/">環境緑化資材<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+          <li><a href="../../contact/">お問い合わせ<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+        </ul>
+      </div>
+      <div class="site-footer__col site-footer__col--powder">
+        <p class="site-footer__heading">粉体受託加工</p>
+        <div class="site-footer__powder-grid">
+          <ul class="site-footer__links site-footer__links--dots">
+            <li><a href="../../powder-processing/#about"><span class="material-symbols-rounded">arrow_circle_right</span>粉体受託加工について</a></li>
+            <li><a href="../../powder-processing/#funsai"><span class="material-symbols-rounded">arrow_circle_right</span>粉砕加工</a></li>
+            <li><a href="../../powder-processing/#kongo"><span class="material-symbols-rounded">arrow_circle_right</span>混合加工</a></li>
+            <li><a href="../../powder-processing/#zouryu"><span class="material-symbols-rounded">arrow_circle_right</span>造粒加工</a></li>
+          </ul>
+          <ul class="site-footer__links site-footer__links--dots">
+            <li><a href="../../powder-processing/#teion"><span class="material-symbols-rounded">arrow_circle_right</span>低温粉砕加工・冷凍粉砕加工</a></li>
+            <li><a href="../../powder-processing/#bunkyu"><span class="material-symbols-rounded">arrow_circle_right</span>分級加工・乾燥加工・その他</a></li>
+            <li><a href="../../powder-processing/#setsubi"><span class="material-symbols-rounded">arrow_circle_right</span>粉体加工設備一覧</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="site-footer__col site-footer__col--brand">
+        <a class="site-footer__logo" href="../../">
+          <img src="../../assets/img/logo.svg" alt="株式会社ナカコー">
+        </a>
+        <a class="btn btn--footer-contact" href="../../contact/">
+          <span class="material-symbols-rounded">mail</span>
+          お問い合わせ
+        </a>
+        <p class="site-footer__privacy">
+          <a href="../../privacy/">個人情報の保護法について</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <img src="../../assets/img/footer-illust.jpg" alt="">
+    <p class="site-footer__copy">Copyright © NAKAKO CO., LTD. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<button type="button" class="pagetop" id="pagetop" aria-label="ページ先頭へ" aria-hidden="true" tabindex="-1">
+  <span class="pagetop__text">PageTop</span>
+  <span class="material-symbols-rounded">keyboard_arrow_up</span>
+</button>
+
+<script src="../../assets/js/main.js" defer></script>
+</body>
+</html>
+
