@@ -19,12 +19,13 @@
   --font-mincho: "Noto Serif JP", "Noto Sans JP", serif;
   --bp: 768px;
   --container: 1200px;
-  --home-hero-h: 70vh;
+  --home-hero-h: 80vh;
   --home-hero-h-sp: 40vh;
   --home-hero-img-max: 1400px;
   --home-hero-zoom-dur: 40s;
   --header-h: 72px;
   --max-w: 900px;
+  --philosophy-w: 950px;
   /* 粉体ページSP：sticky な .powder-tabs のおよそ高さ（padding + 1行タブ） */
   --powder-tabs-sticky-h: 48px;
 }
@@ -686,7 +687,7 @@ select::-ms-expand {
   height: var(--home-hero-h);
   min-height: var(--home-hero-h);
   object-fit: cover;
-  object-position: center center;
+  object-position: center top;
   transform-origin: center center;
   animation: home-hero-zoom-img var(--home-hero-zoom-dur) ease-in-out infinite;
   will-change: transform;
@@ -1068,7 +1069,7 @@ select::-ms-expand {
 .loc-card__tag {
   display: inline-block;
   margin-top: 0;
-  padding: 4px 12px;
+  padding: 4px 12px 2px;
   border-radius: 999px;
   font-size: 13px;
   background-color: var(--color-white) !important;
@@ -1204,7 +1205,7 @@ select::-ms-expand {
   color: var(--color-white);
 }
 .about-philosophy__inner {
-  max-width: var(--container);
+  max-width: var(--philosophy-w);
   margin: 0 auto;
   display: flex;
   flex-direction: row-reverse;
@@ -2169,6 +2170,10 @@ select::-ms-expand {
     grid-template-columns: 1fr;
     padding: 20px;
   }
+  .loc-card__info {
+    width: 90%;
+    margin: 0 auto;
+  }
   .loc-card__title {
     font-size: 18px;
   }
@@ -2179,6 +2184,7 @@ select::-ms-expand {
     justify-self: center;
     width: 90%;
     max-width: none;
+    margin-bottom: 10px;
   }
   .loc-card__tel {
     font-size: 14px;
@@ -2322,6 +2328,9 @@ select::-ms-expand {
   }
   .powder-cta__lead {
     margin: 14px 0 18px;
+  }
+  .powder-cta__button {
+    padding: 16px 30px;
   }
   .bubbles-container {
     flex-direction: column;

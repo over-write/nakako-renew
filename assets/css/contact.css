@@ -343,6 +343,10 @@ select.form-field__input--error {
    レスポンシブ（SP）
    ========================================= */
 @media (max-width: 767px) {
+  .page-hero--contact::after {
+    background-image: url("../img/contact-head-sp.png");
+  }  
+
   .contact-box__inner {
     grid-template-columns: 1fr;
   }
