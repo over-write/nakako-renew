@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # WebP対応ブラウザにはWebPを配信
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{REQUEST_FILENAME} \.(jpe?g|png)$
+  RewriteCond %{REQUEST_FILENAME}\.webp -f
+  RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpe?g|png|webp)$">
+    Header append Vary Accept
+  </FilesMatch>
+</IfModule>
+
+AddType image/webp .webp
