@@ -18,6 +18,7 @@ const TOPIC_LABELS = [
 
 const FORM_FIELDS = [
     'company', 'dept', 'name', 'email', 'zip', 'pref', 'address', 'tel', 'fax',
+
     'topic',
     'material_name', 'material_size', 'material_in', 'material_other',
     'product_name', 'product_plan', 'product_analysis', 'product_ship', 'product_useage', 'product_other',

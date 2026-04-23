@@ -18,7 +18,7 @@
   <div class="site-header__bar">
     <div class="site-header__inner">
       <a class="site-header__logo" href="/">
-        <img src="/assets/img/logo.svg" alt="株式会社ナカコー">
+        <img src="/renew/assets/img/logo.svg" alt="株式会社ナカコー">
       </a>
       <button type="button" class="site-header__menu-btn" id="menu-toggle" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">
         <span class="site-header__menu-icon" aria-hidden="true"></span>
@@ -30,7 +30,7 @@
         <nav class="gnav" aria-label="グローバルナビゲーション">
           <ul class="gnav__list">
             <li class="gnav__item">
-              <a class="gnav__link" href="/about/">私たちについて</a>
+              <a class="gnav__link" href="/renew/about/">私たちについて</a>
             </li>
             <li class="gnav__item gnav__item--has-sub">
               <a class="gnav__link gnav__link--parent" href="/powder-processing/">
@@ -39,25 +39,25 @@
               </a>
               <div class="gnav__sub-wrap">
                 <ul class="gnav__sub">
-                  <li><a class="gnav__sub-link" href="/powder-processing/#about">粉体受託加工について<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
-                  <li><a class="gnav__sub-link" href="/powder-processing/#funsai">粉砕加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
-                  <li><a class="gnav__sub-link" href="/powder-processing/#kongo">混合加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
-                  <li><a class="gnav__sub-link" href="/powder-processing/#zouryu">造粒加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
-                  <li><a class="gnav__sub-link" href="/powder-processing/#teion">低温粉砕加工・冷凍粉砕加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
-                  <li><a class="gnav__sub-link" href="/powder-processing/#bunkyu">分級加工・乾燥加工・その他<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
-                  <li><a class="gnav__sub-link" href="/powder-processing/#setsubi">粉体加工設備一覧<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="/renew/powder-processing/#about">粉体受託加工について<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="/renew/powder-processing/#funsai">粉砕加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="/renew/powder-processing/#kongo">混合加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="/renew/powder-processing/#zouryu">造粒加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="/renew/powder-processing/#teion">低温粉砕加工・冷凍粉砕加工<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="/renew/powder-processing/#bunkyu">分級加工・乾燥加工・その他<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
+                  <li><a class="gnav__sub-link" href="/renew/powder-processing/#setsubi">粉体加工設備一覧<span class="material-symbols-rounded">keyboard_arrow_right</span></a></li>
                 </ul>
               </div>
             </li>
             <li class="gnav__item">
-              <a class="gnav__link" href="/steelmaking-auxiliary-materials/">製鋼副資材</a>
+              <a class="gnav__link" href="/renew/steelmaking-auxiliary-materials/">製鋼副資材</a>
             </li>
             <li class="gnav__item">
-              <a class="gnav__link" href="/greening-materials/">環境緑化資材</a>
+              <a class="gnav__link" href="/renew/greening-materials/">環境緑化資材</a>
             </li>
           </ul>
         </nav>
-        <a class="btn btn--header-contact btn--header-active" href="/contact/">
+        <a class="btn btn--header-contact btn--header-active" href="/renew/contact/">
           <span class="material-symbols-rounded">mail</span>
           お問い合わせ
         </a>
