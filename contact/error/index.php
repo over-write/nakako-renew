@@ -211,7 +211,7 @@ require_once dirname(__DIR__) . '/_parts/header.php';
           </div>
         </div>
         <div class="form-field">
-          <label class="form-field__label" for="p-plan">製品企画</label>
+          <label class="form-field__label" for="p-plan">製品規格</label>
           <div class="form-field__body">
             <input class="form-field__input" type="text" id="p-plan" name="product_plan" value="<?= val($input, 'product_plan') ?>">
           </div>

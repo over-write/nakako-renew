@@ -146,7 +146,7 @@ require_once __DIR__ . '/_parts/header.php';
           <input class="form-field__input" type="text" id="p-name" name="product_name" value="<?= val_index('product_name') ?>">
         </div>
         <div class="form-field">
-          <label class="form-field__label" for="p-plan">製品企画</label>
+          <label class="form-field__label" for="p-plan">製品規格</label>
           <input class="form-field__input" type="text" id="p-plan" name="product_plan" value="<?= val_index('product_plan') ?>">
         </div>
         <div class="form-field">
@@ -188,7 +188,7 @@ require_once __DIR__ . '/_parts/header.php';
 
     <section class="form-section">
       <h3 class="title--outline">個人情報保護法への同意</h3>
-      <p><a href="/privacy/" target="_blank">個人情報保護法</a>をご覧いただいた上、同意いただける場合はチェックを付けてください。</p>
+      <p><a href="../privacy/" target="_blank">個人情報保護法</a>をご覧いただいた上、同意いただける場合はチェックを付けてください。</p>
       <div class="form-field--check">
         <label class="form-check">
           <input type="checkbox" name="privacy" value="1"<?= !empty($saved['privacy']) ? ' checked' : '' ?> required>

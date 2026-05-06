@@ -117,7 +117,7 @@ require_once dirname(__DIR__) . '/_parts/header.php';
       <dl class="contact-summary">
         <dt>製品名</dt>
         <dd><?= h($data['product_name']) ?></dd>
-        <dt>製品企画</dt>
+        <dt>製品規格</dt>
         <dd><?= h($data['product_plan']) ?></dd>
         <dt>分析方法</dt>
         <dd><?= h($data['product_analysis']) ?></dd>
