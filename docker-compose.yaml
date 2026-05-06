@@ -9,6 +9,7 @@ services:
     environment:
       SMTP_HOST: mailpit
       SMTP_PORT: 1025
+      SLACK_WEBHOOK_URL: ""
     depends_on:
       - mailpit
     command: bash -c "a2enmod rewrite && apache2-foreground"

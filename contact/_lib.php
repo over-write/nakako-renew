@@ -109,21 +109,88 @@ function validate_contact(array $data): array {
 const LOG_FILE = __DIR__ . '/_logs/mail.log';
 
 function write_mail_log(string $type, string $to, string $subject, bool $result): void {
-    /*
-    $log_dir = dirname(LOG_FILE);
-    if (!is_dir($log_dir)) {
-        mkdir($log_dir, 0700, true);
+    $webhook = getenv('SLACK_WEBHOOK_URL');
+    if (empty($webhook)) {
+        return;
     }
-    $status = $result ? 'OK' : 'FAIL';
-    $line   = implode("\t", [
+
+    $status = $result ? '✅ OK' : '❌ FAIL';
+    $text   = implode('  |  ', [
         date('Y-m-d H:i:s'),
         $status,
         $type,
         $to,
         $subject,
-    ]) . "\n";
-    file_put_contents(LOG_FILE, $line, FILE_APPEND | LOCK_EX);
-    */
+    ]);
+
+    $payload = json_encode(['text' => $text]);
+    $ctx     = stream_context_create([
+        'http' => [
+            'method'  => 'POST',
+            'header'  => "Content-Type: application/json\r\n",
+            'content' => $payload,
+            'timeout' => 5,
+        ],
+    ]);
+    @file_get_contents($webhook, false, $ctx);
+}
+
+function slack_notify_contact(array $data, bool $result): void {
+    $webhook = getenv('SLACK_WEBHOOK_URL');
+    if (empty($webhook)) {
+        return;
+    }
+
+    $status = $result ? '✅ 送信成功' : '❌ 送信失敗';
+    $topic  = topic_label($data['topic']);
+
+    $lines = [
+        "*【お問い合わせ】{$status}*  " . date('Y-m-d H:i:s'),
+        '',
+        '*■ お客様情報*',
+        '・貴社名: '             . $data['company'],
+        '・部署名・役職名: '     . $data['dept'],
+        '・ご担当者名: '         . $data['name'],
+        '・メールアドレス: '     . $data['email'],
+        '・郵便番号: '           . $data['zip'],
+        '・ご住所（都道府県）: ' . $data['pref'],
+        '・ご住所: '             . $data['address'],
+        '・TEL: '                . $data['tel'],
+        '・FAX: '                . $data['fax'],
+        '',
+        '*■ 粉体受託加工に関する内容*',
+        '・お問い合わせ内容: '   . $topic,
+        '',
+        '*■ 原料情報*',
+        '・原料名: '     . $data['material_name'],
+        '・粒度・形状: ' . $data['material_size'],
+        '・入荷形態: '   . $data['material_in'],
+        '・その他: '     . $data['material_other'],
+        '',
+        '*■ 製品情報*',
+        '・製品名: '   . $data['product_name'],
+        '・製品規格: ' . $data['product_plan'],
+        '・分析方法: ' . $data['product_analysis'],
+        '・出荷荷姿: ' . $data['product_ship'],
+        '・製品用途: ' . $data['product_useage'],
+        '・その他: '   . $data['product_other'],
+        '',
+        '*■ その他*',
+        '・数量・継続性: ' . $data['other_qty'],
+        '・加工時期: '    . $data['other_period'],
+        '・その他: '      . $data['other_note'],
+    ];
+
+    $payload = json_encode(['text' => implode("\n", $lines)]);
+    $ctx     = stream_context_create([
+        'http' => [
+            'method'  => 'POST',
+            'header'  => "Content-Type: application/json\r\n",
+            'content' => $payload,
+            'timeout' => 5,
+        ],
+    ]);
+    @file_get_contents($webhook, false, $ctx);
 }
 
 function smtp_send(string $to, string $from_addr, string $from_name, string $subject, string $body, array $extra_headers = []): bool {
@@ -260,5 +327,8 @@ function send_contact_mail(array $data): bool {
     $user_result  = smtp_send($data['email'], MAIL_FROM, '株式会社ナカコー', $user_subject, $user_body);
     write_mail_log('autoReply', $data['email'], $user_subject, $user_result);
 
-    return $company_result && $user_result;
+    $overall = $company_result && $user_result;
+    slack_notify_contact($data, $overall);
+
+    return $overall;
 }

@@ -1,3 +1,5 @@
+SetEnv SLACK_WEBHOOK_URL "YOUR_SLACK_WEBHOOK_URL"
+
 AuthUserFile /www/acc_cnt/kknakako.usr
 AuthGroupFile /www/acc_cnt/kknakako.grp
 AuthType Basic
