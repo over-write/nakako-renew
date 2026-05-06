@@ -33,7 +33,7 @@
               <a class="gnav__link" href="/renew/about/">私たちについて</a>
             </li>
             <li class="gnav__item gnav__item--has-sub">
-              <a class="gnav__link gnav__link--parent" href="/powder-processing/">
+              <a class="gnav__link gnav__link--parent" href="/renew/powder-processing/">
                 粉体受託加工
                 <span class="material-symbols-rounded">arrow_circle_down</span>
               </a>

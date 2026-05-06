@@ -179,6 +179,48 @@
     schedulePowderScrollSpy();
   }
 
+  /* お問い合わせフォーム：郵便番号 → 住所自動入力 */
+  var zipInput = document.getElementById("zip");
+  var zipBtn = document.querySelector(".form-field__btn");
+  var prefInput = document.getElementById("pref");
+  var addressInput = document.getElementById("address");
+
+  function lookupZip() {
+    var zip = zipInput.value.replace(/[^\d]/g, "");
+    if (zip.length !== 7) {
+      alert("郵便番号を7桁で入力してください（ハイフンなし）");
+      return;
+    }
+    zipBtn.disabled = true;
+    zipBtn.textContent = "検索中…";
+    fetch("https://zipcloud.ibsnet.co.jp/api/search?zipcode=" + zip)
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (!data.results || !data.results.length) {
+          alert("該当する住所が見つかりませんでした。");
+          return;
+        }
+        var r = data.results[0];
+        prefInput.value = r.address1;
+        addressInput.value = r.address2 + r.address3;
+        addressInput.focus();
+      })
+      .catch(function () {
+        alert("住所の取得に失敗しました。手動でご入力ください。");
+      })
+      .finally(function () {
+        zipBtn.disabled = false;
+        zipBtn.textContent = "住所検索";
+      });
+  }
+
+  if (zipBtn && zipInput && prefInput && addressInput) {
+    zipBtn.addEventListener("click", lookupZip);
+    zipInput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); lookupZip(); }
+    });
+  }
+
   var galleryRow = document.querySelector(".home-gallery__row");
   if (galleryRow) {
     var galleryImgs = galleryRow.querySelectorAll("img");
