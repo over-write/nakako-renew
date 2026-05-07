@@ -1813,10 +1813,16 @@ select::-ms-expand {
 /* 横位置は main.js が表ラッパー幅に合わせて inline で指定 */
 
 @media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+  /* :focus-within は使わない（クリック後もフォーカスが残り矢印が消えないため） */
   .table-scroll-shell--scrollable:not(.table-scroll-shell--at-start):hover .table-scroll-shell__nav--prev,
-  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-start):focus-within .table-scroll-shell__nav--prev,
-  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-end):hover .table-scroll-shell__nav--next,
-  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-end):focus-within .table-scroll-shell__nav--next {
+  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-end):hover .table-scroll-shell__nav--next {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* キーボード操作時のみボタンにフォーカスが見えるとき表示 */
+  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-start) .table-scroll-shell__nav--prev:focus-visible,
+  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-end) .table-scroll-shell__nav--next:focus-visible {
     opacity: 1;
     pointer-events: auto;
   }
