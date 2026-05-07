@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>粉体受託加工 | 株式会社ナカコー</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+  <link rel="icon" href="../assets/favicon/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../assets/favicon/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
@@ -329,8 +333,9 @@
       <section class="powder-section" id="setsubi" tabindex="-1">
         <h2 class="page-title page-title--blue">粉体加工設備一覧</h2>
         <p class="powder-tabs__note"><small>※この表は横スクロールします</small></p>
-        <div class="table-wrap">
-          <table class="data-table setsubi-table">
+        <div class="table-scroll-shell" data-table-scroll-shell>
+          <div class="table-wrap table-scroll-shell__viewport">
+            <table class="data-table setsubi-table">
             <thead>
               <tr>
                 <th scope="col">分類</th>
@@ -675,7 +680,14 @@
                 <td>志賀包装機製</td>
               </tr>
             </tbody>
-          </table>
+            </table>
+          </div>
+          <button type="button" class="table-scroll-shell__nav table-scroll-shell__nav--prev" aria-label="設備一覧表を左へスクロール" aria-hidden="true" tabindex="-1">
+            <span class="material-symbols-rounded" aria-hidden="true">chevron_left</span>
+          </button>
+          <button type="button" class="table-scroll-shell__nav table-scroll-shell__nav--next" aria-label="設備一覧表を右へスクロール" aria-hidden="true" tabindex="-1">
+            <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span>
+          </button>
         </div>
         <p class="setsubi-print">
           <a class="btn btn--pdf" href="../assets/pdf/powder-processing-list.pdf" target="_blank">印刷用画面を開く<span class="material-symbols-rounded">picture_as_pdf</span></a>

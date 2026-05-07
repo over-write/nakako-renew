@@ -179,6 +179,85 @@
     schedulePowderScrollSpy();
   }
 
+  /* 粉体ページ：設備一覧テーブルの横スクロール（端検知・ボタン） */
+  document.querySelectorAll("[data-table-scroll-shell]").forEach(function (shell) {
+    var viewport =
+      shell.querySelector(".table-scroll-shell__viewport") ||
+      shell.querySelector(".table-wrap");
+    var prevBtn = shell.querySelector(".table-scroll-shell__nav--prev");
+    var nextBtn = shell.querySelector(".table-scroll-shell__nav--next");
+    if (!viewport || !prevBtn || !nextBtn) return;
+
+    var SNAP = 2;
+    var NAV_INSET = 8;
+    var NAV_SIZE = 40;
+
+    function positionNavWithinTableBand() {
+      var rect = viewport.getBoundingClientRect();
+      prevBtn.style.left = rect.left + NAV_INSET + "px";
+      prevBtn.style.right = "auto";
+      nextBtn.style.left = rect.right - NAV_SIZE - NAV_INSET + "px";
+      nextBtn.style.right = "auto";
+    }
+
+    var navPosRaf = 0;
+    function scheduleNavPosition() {
+      if (navPosRaf) return;
+      navPosRaf = requestAnimationFrame(function () {
+        navPosRaf = 0;
+        positionNavWithinTableBand();
+      });
+    }
+
+    function applyScrollHints() {
+      var maxScroll = viewport.scrollWidth - viewport.clientWidth;
+      var scrollable = maxScroll > SNAP;
+      var left = viewport.scrollLeft;
+      var atStart = !scrollable || left <= SNAP;
+      var atEnd = !scrollable || left >= maxScroll - SNAP;
+
+      shell.classList.toggle("table-scroll-shell--scrollable", scrollable);
+      shell.classList.toggle("table-scroll-shell--at-start", atStart);
+      shell.classList.toggle("table-scroll-shell--at-end", atEnd);
+
+      prevBtn.tabIndex = scrollable && !atStart ? 0 : -1;
+      nextBtn.tabIndex = scrollable && !atEnd ? 0 : -1;
+      prevBtn.setAttribute("aria-hidden", scrollable && !atStart ? "false" : "true");
+      nextBtn.setAttribute("aria-hidden", scrollable && !atEnd ? "false" : "true");
+
+      scheduleNavPosition();
+    }
+
+    function scrollByStep(dir) {
+      var step = Math.min(280, viewport.clientWidth * 0.65);
+      viewport.scrollBy({ left: dir * step, behavior: "smooth" });
+    }
+
+    prevBtn.addEventListener("click", function () {
+      scrollByStep(-1);
+    });
+    nextBtn.addEventListener("click", function () {
+      scrollByStep(1);
+    });
+
+    viewport.addEventListener("scroll", applyScrollHints, { passive: true });
+    window.addEventListener("resize", applyScrollHints);
+    window.addEventListener("pageshow", applyScrollHints);
+    window.addEventListener("scroll", scheduleNavPosition, { passive: true });
+    applyScrollHints();
+
+    if ("ResizeObserver" in window) {
+      var ro = new ResizeObserver(function () {
+        applyScrollHints();
+      });
+      ro.observe(viewport);
+      var tbl = viewport.querySelector("table");
+      if (tbl) {
+        ro.observe(tbl);
+      }
+    }
+  });
+
   /* お問い合わせフォーム：郵便番号 → 住所自動入力 */
   var zipInput = document.getElementById("zip");
   var zipBtn = document.querySelector(".form-field__btn");

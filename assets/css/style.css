@@ -1776,6 +1776,68 @@ select::-ms-expand {
   min-width: 100%;
 }
 
+/* --- 設備一覧：横スクロール補助（PCのみ矢印・画面縦中央に固定） --- */
+.table-scroll-shell {
+  min-width: 0;
+}
+
+.table-scroll-shell__nav {
+  position: fixed;
+  top: 60%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0 2px 5px 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--color-white);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.22s ease,
+    background-color 0.22s ease;
+}
+
+.table-scroll-shell__nav .material-symbols-rounded {
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* 横位置は main.js が表ラッパー幅に合わせて inline で指定 */
+
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-start):hover .table-scroll-shell__nav--prev,
+  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-start):focus-within .table-scroll-shell__nav--prev,
+  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-end):hover .table-scroll-shell__nav--next,
+  .table-scroll-shell--scrollable:not(.table-scroll-shell--at-end):focus-within .table-scroll-shell__nav--next {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .table-scroll-shell__nav:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+@media (max-width: 768px) {
+  .table-scroll-shell__nav {
+    display: none;
+  }
+}
+
+@media print {
+  .table-scroll-shell__nav {
+    display: none !important;
+  }
+}
+
 /* --- 設備一覧テーブル --- */
 .setsubi-table {
   width: 100%;
