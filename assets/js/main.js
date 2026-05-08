@@ -246,14 +246,126 @@
     window.addEventListener("scroll", scheduleNavPosition, { passive: true });
     applyScrollHints();
 
+    var tbl = viewport.querySelector("table");
+
     if ("ResizeObserver" in window) {
       var ro = new ResizeObserver(function () {
         applyScrollHints();
       });
       ro.observe(viewport);
-      var tbl = viewport.querySelector("table");
       if (tbl) {
         ro.observe(tbl);
+      }
+    }
+
+    /* 設備一覧 thead をサイトヘッダー直下に見せる（PC・SP。.table-wrap の overflow-x がスクロールコンテナになり CSS の sticky が効かないため複製＋fixed） */
+    if (tbl && tbl.classList.contains("setsubi-table")) {
+      var theadEl = tbl.querySelector("thead");
+      if (theadEl) {
+        var powderTabsEl = document.querySelector(".powder-tabs");
+        var stickyRoot = document.createElement("div");
+        stickyRoot.className = "setsubi-sticky-thead";
+        stickyRoot.setAttribute("aria-hidden", "true");
+        var stickyPan = document.createElement("div");
+        stickyPan.className = "setsubi-sticky-thead__pan";
+        var stickyTable = document.createElement("table");
+        stickyTable.className = tbl.className + " setsubi-table--sticky-clone";
+        stickyTable.appendChild(theadEl.cloneNode(true));
+        stickyPan.appendChild(stickyTable);
+        stickyRoot.appendChild(stickyPan);
+        document.body.appendChild(stickyRoot);
+
+        var stickyRaf = 0;
+
+        function headerStickyInsetPx() {
+          var headerEl = document.querySelector(".site-header");
+          var y = headerEl ? headerEl.getBoundingClientRect().bottom : NaN;
+          if (!isFinite(y)) {
+            var hh = parseFloat(
+              getComputedStyle(document.documentElement).getPropertyValue("--header-h")
+            );
+            y = isFinite(hh) ? hh : 72;
+          }
+
+          /* SP 粉体：.powder-tabs がヘッダー直下に sticky のときは、その下から複製 thead を出す */
+          var tabs = powderTabsEl;
+          if (tabs && getComputedStyle(tabs).display !== "none") {
+            var tr = tabs.getBoundingClientRect();
+            if (tr.top <= y + 1) {
+              y = Math.max(y, tr.bottom);
+            }
+          }
+
+          return y;
+        }
+
+        function syncStickyCloneWidths() {
+          var origThs = tbl.querySelectorAll("thead th");
+          var cloneThs = stickyTable.querySelectorAll("thead th");
+          if (!origThs.length || origThs.length !== cloneThs.length) {
+            return;
+          }
+          stickyTable.style.width = tbl.offsetWidth + "px";
+          for (var ti = 0; ti < origThs.length; ti++) {
+            var cw = origThs[ti].getBoundingClientRect().width;
+            cloneThs[ti].style.width = cw + "px";
+            cloneThs[ti].style.boxSizing = "border-box";
+          }
+        }
+
+        function updateStickyThead() {
+          var theadRow = tbl.querySelector("thead tr");
+          if (!theadRow) {
+            stickyRoot.classList.remove("setsubi-sticky-thead--visible");
+            return;
+          }
+
+          var insetTop = headerStickyInsetPx();
+          var theadTop = theadRow.getBoundingClientRect().top;
+          var tableBottom = tbl.getBoundingClientRect().bottom;
+          var show = theadTop < insetTop && tableBottom > insetTop + 2;
+
+          if (!show) {
+            stickyRoot.classList.remove("setsubi-sticky-thead--visible");
+            return;
+          }
+
+          var vr = viewport.getBoundingClientRect();
+          stickyRoot.style.top = insetTop + "px";
+          stickyRoot.style.left = vr.left + "px";
+          stickyRoot.style.width = vr.width + "px";
+
+          stickyPan.style.transform = "translateX(" + -viewport.scrollLeft + "px)";
+
+          syncStickyCloneWidths();
+          stickyRoot.classList.add("setsubi-sticky-thead--visible");
+        }
+
+        function scheduleStickyThead() {
+          if (stickyRaf) {
+            return;
+          }
+          stickyRaf = requestAnimationFrame(function () {
+            stickyRaf = 0;
+            updateStickyThead();
+          });
+        }
+
+        viewport.addEventListener("scroll", scheduleStickyThead, { passive: true });
+        window.addEventListener("scroll", scheduleStickyThead, { passive: true });
+        window.addEventListener("resize", scheduleStickyThead);
+        window.addEventListener("pageshow", scheduleStickyThead);
+
+        if ("ResizeObserver" in window) {
+          var stickyRo = new ResizeObserver(scheduleStickyThead);
+          stickyRo.observe(viewport);
+          stickyRo.observe(tbl);
+          if (powderTabsEl) {
+            stickyRo.observe(powderTabsEl);
+          }
+        }
+
+        scheduleStickyThead();
       }
     }
   });

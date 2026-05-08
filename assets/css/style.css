@@ -1892,6 +1892,37 @@ select::-ms-expand {
   text-align: center;
 }
 
+/* --- 設備一覧：JS が body に追加する複製 thead（サイトヘッダー直下に fixed・PC/SP 共通） --- */
+.setsubi-sticky-thead {
+  position: fixed;
+  z-index: 990;
+  overflow: hidden;
+  pointer-events: none;
+  box-sizing: border-box;
+  visibility: hidden;
+}
+
+.setsubi-sticky-thead--visible {
+  visibility: visible;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.setsubi-sticky-thead__pan {
+  display: block;
+}
+
+.setsubi-table--sticky-clone {
+  margin: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+@media print {
+  .setsubi-sticky-thead {
+    display: none !important;
+  }
+}
+
 /* =========================================
    サブページ共通（製鋼副資材・環境緑化など）
    ========================================= */
