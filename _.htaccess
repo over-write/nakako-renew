@@ -11,8 +11,8 @@ require group kknakako000
 
   # WebP対応ブラウザにはWebPを配信
   RewriteCond %{HTTP_ACCEPT} image/webp
-  RewriteCond %{REQUEST_FILENAME} \.(jpe?g|png)$
-  RewriteCond %{REQUEST_FILENAME}\.webp -f
+  RewriteCond %{REQUEST_FILENAME} ^(.+)\.(jpe?g|png)$
+  RewriteCond %1.webp -f
   RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
 </IfModule>
 
