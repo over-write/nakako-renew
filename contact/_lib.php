@@ -4,8 +4,8 @@ if (!defined('NAKAKO_CONTACT')) {
     exit;
 }
 
-const MAIL_TO        = 'sakoda@overwrite.work';
-const MAIL_FROM      = 'noreply@nakako.co.jp';
+const MAIL_TO        = 'sakoda@overwrite.work,nakako@kk-nakako.co.jp';
+const MAIL_FROM      = 'nakako@kk-nakako.co.jp';
 const MAIL_FROM_NAME = '株式会社ナカコー お問い合わせフォーム';
 
 const TOPIC_LABELS = [
