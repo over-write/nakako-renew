@@ -1,0 +1,35 @@
+# WebP対応ブラウザには同名の .webp を配信（ローカル・本番 共通で動作）
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{REQUEST_FILENAME} ^(.+)\.(jpe?g|png)$
+  RewriteCond %1.webp -f
+  RewriteRule ^(.+)\.(jpe?g|png)$ $1.webp [T=image/webp,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(jpe?g|png|webp)$">
+    Header append Vary Accept
+  </FilesMatch>
+</IfModule>
+
+AddType image/webp .webp
+
+# Basic認証（本番のみ有効）
+# ローカルDockerには mod_authz_groupfile が読み込まれていないため、このブロックは
+# パースされず自動的に無効化される（= サーバー固有パスによる 500 を回避）。
+# 本番ホスティングでは同モジュールが有効なので認証が機能する。
+<IfModule mod_authz_groupfile.c>
+  AuthUserFile /www/acc_cnt/kknakako.usr
+  AuthGroupFile /www/acc_cnt/kknakako.grp
+  AuthType Basic
+  AuthName "Access Control Service"
+  Require group kknakako000
+</IfModule>
+
+# SLACK_WEBHOOK_URL は環境ごとに設定し、実URLはこのファイルに置かない:
+#   ローカル … docker-compose.yaml の environment（空文字 → Slack通知スキップ）
+#   本番     … サーバー側 .htaccess の SetEnv で実URLを設定（手動管理）
+# 本番反映時は下記をコメント解除して実URLを入れること。
+#   SetEnv SLACK_WEBHOOK_URL "https://hooks.slack.com/services/XXX/YYY/ZZZ"
