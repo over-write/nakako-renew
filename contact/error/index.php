@@ -5,7 +5,7 @@ session_start();
 
 // セッションにエラーがなければ入力フォームへ
 if (empty($_SESSION['contact_errors'])) {
-    header('Location: /contact/');
+    header('Location: /renew/contact/');
     exit;
 }
 

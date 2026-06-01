@@ -16,13 +16,13 @@ if (
     empty($token) ||
     !hash_equals($_SESSION['contact_token'], $token)
 ) {
-    header('Location: /contact/');
+    header('Location: /renew/contact/');
     exit;
 }
 
 // セッションデータ検証
 if (empty($_SESSION['contact_data'])) {
-    header('Location: /contact/');
+    header('Location: /renew/contact/');
     exit;
 }
 
