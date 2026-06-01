@@ -21,7 +21,7 @@
 <header class="site-header" id="site-header">
   <div class="site-header__bar">
     <div class="site-header__inner">
-      <a class="site-header__logo" href="/">
+      <a class="site-header__logo" href="/renew/">
         <img src="/renew/assets/img/logo.svg" alt="株式会社ナカコー">
       </a>
       <button type="button" class="site-header__menu-btn" id="menu-toggle" aria-controls="global-nav" aria-expanded="false" aria-label="メニューを開く">

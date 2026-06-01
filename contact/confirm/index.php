@@ -48,7 +48,7 @@ require_once dirname(__DIR__) . '/_parts/header.php';
     <div class="page-hero__inner page-hero__inner--breadcrumb">
       <nav class="breadcrumb" aria-label="パンくずリスト">
         <ol class="breadcrumb__list">
-          <li><a href="/">トップ</a></li>
+          <li><a href="/renew/">トップ</a></li>
           <li><a href="/renew/contact/">お問い合わせ</a></li>
           <li aria-current="page">入力内容の確認</li>
         </ol>

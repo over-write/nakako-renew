@@ -40,8 +40,8 @@ require_once dirname(__DIR__) . '/_parts/header.php';
     <div class="page-hero__inner page-hero__inner--breadcrumb">
       <nav class="breadcrumb" aria-label="パンくずリスト">
         <ol class="breadcrumb__list">
-          <li><a href="/">トップ</a></li>
-          <li><a href="/contact/">お問い合わせ</a></li>
+          <li><a href="/renew/">トップ</a></li>
+          <li><a href="/renew/contact/">お問い合わせ</a></li>
           <li aria-current="page">入力エラー</li>
         </ol>
       </nav>
@@ -269,7 +269,7 @@ require_once dirname(__DIR__) . '/_parts/header.php';
 
     <section class="form-section">
       <h3 class="title--outline">個人情報保護法への同意</h3>
-      <p><a href="/privacy/" target="_blank">個人情報保護法</a>をご覧いただいた上、同意いただける場合はチェックを付けてください。</p>
+      <p><a href="/renew/privacy/" target="_blank">個人情報保護法</a>をご覧いただいた上、同意いただける場合はチェックを付けてください。</p>
       <div class="<?= wrapper_class($errors, 'privacy', 'form-field--check') ?>">
         <label class="form-check">
           <input type="checkbox" name="privacy" value="1" required<?= isset($errors['privacy']) ? ' aria-invalid="true" aria-describedby="privacy-error"' : '' ?>>

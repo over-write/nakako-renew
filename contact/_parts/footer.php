@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="site-footer__col site-footer__col--brand">
-        <a class="site-footer__logo" href="/">
+        <a class="site-footer__logo" href="/renew/">
           <img src="/renew/assets/img/logo.svg" alt="株式会社ナカコー">
         </a>
         <a class="btn btn--footer-contact" href="/renew/contact/">

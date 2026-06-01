@@ -16,8 +16,8 @@ require_once dirname(__DIR__) . '/_parts/header.php';
     <div class="page-hero__inner page-hero__inner--breadcrumb">
       <nav class="breadcrumb" aria-label="パンくずリスト">
         <ol class="breadcrumb__list">
-          <li><a href="/">トップ</a></li>
-          <li><a href="/contact/">お問い合わせ</a></li>
+          <li><a href="/renew/">トップ</a></li>
+          <li><a href="/renew/contact/">お問い合わせ</a></li>
           <li aria-current="page">送信完了</li>
         </ol>
       </nav>
@@ -37,7 +37,7 @@ require_once dirname(__DIR__) . '/_parts/header.php';
 
   <div class="contact-form contact-form--static">
     <div class="form-actions contact-thanks__actions">
-      <a class="btn btn--outline" href="/">
+      <a class="btn btn--outline" href="/renew/">
         トップページへ
         <span class="material-symbols-rounded">keyboard_arrow_right</span>
       </a>
