@@ -35,7 +35,7 @@
           お問い合わせ
         </a>
         <p class="site-footer__privacy">
-          <a href="/renew/privacy/">個人情報の保護法について</a>
+          <a href="/renew/privacy/">個人情報保護法について</a>
         </p>
       </div>
     </div>
