@@ -1,3 +1,8 @@
 .idea*
 contact/_logs/
 **/.DS_Store
+deploy/config.env
+deploy/.last-deploy
+AGENTS.md
+CLAUDE.md
+docker-compose.yaml
